@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Tes Bakat</string>
+    <string name="appCenterCrashes_whenToSendCrashes" moduleConfig="true" translatable="false">DO_NOT_ASK_JAVASCRIPT</string>
+    <string name="appCenterAnalytics_whenToEnableAnalytics" moduleConfig="true" translatable="false">ALWAYS_SEND</string>
+    <!-- staging -->
+    <string moduleConfig="true" name="CodePushDeploymentKey">hQlu4ATayPMytKBMCWkT973EpabVGQGUfSgVn</string>
+    <!-- production -->
+    <!-- <string moduleConfig="true" name="CodePushDeploymentKey">E3OXnXOLUJEqtJnaViwgYqQV8-CTAjDnarGLS</string> -->
+</resources>
