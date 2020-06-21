@@ -17,6 +17,7 @@
     "appcenter": "3.0.3",
     "appcenter-analytics": "3.0.3",
     "appcenter-crashes": "3.0.3",
+    "lottie-react-native": "^3.4.0",
     "react": "16.11.0",
     "react-native": "0.62.2",
     "react-native-code-push": "^6.2.1",

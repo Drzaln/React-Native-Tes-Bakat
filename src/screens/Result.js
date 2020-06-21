@@ -1,7 +1,8 @@
-import React, { useContext } from 'react'
+import React, { useContext, useRef, useEffect } from 'react'
 import { View, Text, StatusBar, FlatList, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/Feather'
 import { NavigationContext } from '@react-navigation/native'
+import LottieView from 'lottie-react-native'
 
 const Result = ({ route }) => {
 	const { list } = route.params
@@ -15,11 +16,6 @@ const Result = ({ route }) => {
 				contentContainerStyle={{ padding: 16 }}
 				data={list.sort((a, b) => b.point - a.point)}
 				renderItem={({ item, index }) => <RenderItem index={index} item={item} />}
-				ListHeaderComponent={() => (
-					<View style={{ marginBottom: 8 }}>
-						<Text style={{ lineHeight: 20 }}>Berikut adalah hasil dari tes yang anda kerjakan.</Text>
-					</View>
-				)}
 			/>
 		</React.Fragment>
 	)
@@ -33,9 +29,27 @@ const RenderItem = ({ index, item }) => {
 
 	if (index === 0) {
 		content = (
-			<View>
-				<Text>{item.name}</Text>
-			</View>
+			<TouchableOpacity
+				onPress={() => navigation.navigate('Detail', { deskripsi: item.deskripsi, judul: item.name })}
+				style={{
+					padding: 16,
+					backgroundColor: 'white',
+					borderRadius: 8,
+					marginVertical: 8,
+					alignItems: 'center'
+				}}>
+				<LottieView
+					autoPlay
+					autoSize
+					source={require('../assets/animations/cup-winner.json')}
+					hardwareAccelerationAndroid={true}
+				/>
+				<Text style={{ lineHeight: 24 }}>Hasil tes tertinggimu adalah</Text>
+				<Text style={{ fontWeight: 'bold', fontSize: 16 }}>{item.name}</Text>
+				<Text style={{ lineHeight: 24 }}>{item.point} poin</Text>
+				<View style={{ height: 16 }} />
+				<Text style={{ fontSize: 12, color: 'dodgerblue' }}>Tap Untuk Detail</Text>
+			</TouchableOpacity>
 		)
 	} else {
 		content = (
