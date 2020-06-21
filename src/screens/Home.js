@@ -20,8 +20,8 @@ const Home = () => {
 							Tes Bakat ini didapatkan dari kajian dr. Aisyah Dahlan.
 						</Text>
 						<Text style={{ marginTop: 16, lineHeight: 20 }}>
-							Berikan skor pada setiap pernyataan antara 0-5. Berikan skor 5 untuk pernyataan yang sangat
-							mengambarkan diri kalian, dan skor 0 untuk yang tidak tepat.
+							Berikan skor pada setiap pernyataan antara 1-5. Berikan skor 5 untuk pernyataan yang sangat
+							mengambarkan diri kalian, dan skor 1 untuk yang tidak tepat.
 						</Text>
 					</View>
 					<View style={{ marginTop: 28 }}>

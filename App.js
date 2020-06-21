@@ -7,27 +7,49 @@ import Home from './src/screens/Home'
 import Tes from './src/screens/Tes'
 import codePush from 'react-native-code-push'
 import Result from './src/screens/Result'
+import Detail from './src/screens/Detail'
+import { color } from 'react-native-reanimated'
 
 enableScreens()
 
-let codePushOptions = {
-	checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
-	installMode: codePush.InstallMode.ON_NEXT_RESUME
-}
 const Stack = createStackNavigator()
 
 function App() {
 	return (
 		<NavigationContainer>
 			<Stack.Navigator initialRouteName='Home'>
-				<Stack.Screen name='Home' component={Home} options={{ headerTitleAlign: 'center' }} />
-				<Stack.Screen name='Tes Bakat' component={Tes} options={{ headerTitleAlign: 'center' }} />
-				<Stack.Screen name='Hasil Tes' component={Result} options={{ headerTitleAlign: 'center' }} />
+				<Stack.Screen
+					name='Home'
+					component={Home}
+					options={{
+						headerTitleAlign: 'center',
+						headerTintColor: 'darkslategrey'
+					}}
+				/>
+				<Stack.Screen
+					name='Tes Bakat'
+					component={Tes}
+					options={{ headerTitleAlign: 'center', headerTintColor: 'darkslategrey' }}
+				/>
+				<Stack.Screen
+					name='Hasil Tes'
+					component={Result}
+					options={{ headerTitleAlign: 'center', headerTintColor: 'darkslategrey' }}
+				/>
+				<Stack.Screen
+					name='Detail'
+					component={Detail}
+					options={({ route }) => ({
+						headerTitleAlign: 'center',
+						headerTintColor: 'darkslategrey',
+						title: route.params.judul
+					})}
+				/>
 			</Stack.Navigator>
 		</NavigationContainer>
 	)
 }
 
-App = codePush(codePushOptions)(App)
+App = codePush()(App)
 
 export default App

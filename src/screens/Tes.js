@@ -2,7 +2,6 @@ import React, { useState, useContext, useMemo } from 'react'
 import { View, Text, StatusBar, FlatList, TouchableOpacity } from 'react-native'
 import { Question } from '../questions/Question'
 import { QuestionController, QuestionContext } from '../contexts/QuestionContext'
-import { NavigationContext } from '@react-navigation/native'
 
 const Tes = () => {
 	return (

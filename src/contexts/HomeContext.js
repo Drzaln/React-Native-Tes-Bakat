@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 
 const initialState = {
 	name: '',
@@ -21,16 +21,19 @@ export const HomeController = ({ children }) => {
 		buttonDisabled = false
 	}
 
-	return (
-		<HomeProvider
-			value={{
-				name,
-				asal,
-				buttonDisabled,
-				setName,
-				setAsal
-			}}>
-			{children}
-		</HomeProvider>
+	return useMemo(
+		() => (
+			<HomeProvider
+				value={{
+					name,
+					asal,
+					buttonDisabled,
+					setName,
+					setAsal
+				}}>
+				{children}
+			</HomeProvider>
+		),
+		[ name, asal ]
 	)
 }

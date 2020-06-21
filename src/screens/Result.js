@@ -13,11 +13,11 @@ const Result = ({ route }) => {
 				showsVerticalScrollIndicator={false}
 				style={{ flex: 1 }}
 				contentContainerStyle={{ padding: 16 }}
-				data={list}
+				data={list.sort((a, b) => b.point - a.point)}
 				renderItem={({ item, index }) => <RenderItem index={index} item={item} />}
 				ListHeaderComponent={() => (
 					<View style={{ marginBottom: 8 }}>
-						<Text>Berikut adalah hasil dari tes yang anda kerjakan</Text>
+						<Text style={{ lineHeight: 20 }}>Berikut adalah hasil dari tes yang anda kerjakan.</Text>
 					</View>
 				)}
 			/>
@@ -29,29 +29,41 @@ export default Result
 
 const RenderItem = ({ index, item }) => {
 	const navigation = useContext(NavigationContext)
-	return (
-		<TouchableOpacity
-			key={index}
-			onPress={() => alert('Masih dalam pengembangan')}
-			style={{
-				marginVertical: 8,
-				padding: 16,
-				borderRadius: 8,
-				backgroundColor: 'white'
-			}}>
-			<View
-				style={{
-					alignItems: 'center',
-					justifyContent: 'space-between',
-					flexDirection: 'row'
-				}}>
+	let content
+
+	if (index === 0) {
+		content = (
+			<View>
 				<Text>{item.name}</Text>
-				<View style={{ flexDirection: 'row', alignItems: 'center' }}>
-					<Text>{item.point}</Text>
-					<Icon name='chevron-right' size={24} />
-				</View>
 			</View>
-			<Text style={{ fontSize: 12, color: 'dodgerblue' }}>Tap Untuk Detail</Text>
-		</TouchableOpacity>
-	)
+		)
+	} else {
+		content = (
+			<TouchableOpacity
+				key={index}
+				onPress={() => navigation.navigate('Detail', { deskripsi: item.deskripsi, judul: item.name })}
+				style={{
+					marginVertical: 8,
+					padding: 16,
+					borderRadius: 8,
+					backgroundColor: 'white'
+				}}>
+				<View
+					style={{
+						alignItems: 'center',
+						justifyContent: 'space-between',
+						flexDirection: 'row'
+					}}>
+					<Text>{item.name}</Text>
+					<View style={{ flexDirection: 'row', alignItems: 'center' }}>
+						<Text>{item.point}</Text>
+						<Icon name='chevron-right' size={24} />
+					</View>
+				</View>
+				<Text style={{ fontSize: 12, color: 'dodgerblue' }}>Tap Untuk Detail</Text>
+			</TouchableOpacity>
+		)
+	}
+
+	return content
 }
